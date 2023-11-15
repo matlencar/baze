@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -22,17 +24,24 @@ public class Endereco {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotBlank
     private String logradouro;
 
+    @NotNull
     private int numero;
 
+    @NotBlank
     private String bairro;
 
+    @NotBlank
     private String cidade;
     
+    @NotBlank
     private String pais;
 
+    @NotBlank
     private String cep;
 
+    @NotBlank
     private String complemento;
 }
