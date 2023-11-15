@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.fiap.global.baze.excepions.RestNotFoundException;
 import br.com.fiap.global.baze.model.Registro;
 import br.com.fiap.global.baze.repository.RegistroRepository;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/registros")
@@ -38,7 +40,7 @@ public class RegistroController {
 
     // Cadastro
     @PostMapping
-    public ResponseEntity<Registro> create(@RequestBody Registro registro) {
+    public ResponseEntity<Registro> create(@RequestBody @Valid Registro registro) {
         log.info("Cadastrando um registro" + registro);
 
         repository.save(registro);
@@ -51,25 +53,18 @@ public class RegistroController {
     public ResponseEntity<Registro> show(@PathVariable Integer id) {
 
         log.info("buscando um registro por id" + id);
-        var buscarRegistro = repository.findById(id);
-        
-        if(buscarRegistro.isEmpty())
-            return ResponseEntity.notFound().build();
 
-        return ResponseEntity.ok(buscarRegistro.get());
+        return ResponseEntity.ok(getRegistro(id));
     }
 
     // Atualizar
     @PutMapping("{id}")
-    public ResponseEntity<Registro> update(@PathVariable Integer id, @RequestBody Registro registro) {
+    public ResponseEntity<Registro> update(@PathVariable Integer id, @RequestBody @Valid Registro registro) {
 
         log.info("Atualizando as informaçoes do registro" + id);
-
-        var buscarRegistroUpdate = repository.findById(id);
-
-        if (buscarRegistroUpdate.isEmpty())
-            return ResponseEntity.notFound().build();
            
+            getRegistro(id);
+
             registro.setId(id);
             repository.save(registro);
 
@@ -80,13 +75,14 @@ public class RegistroController {
     @DeleteMapping("{id}")
     public ResponseEntity<Registro> destroy(@PathVariable Integer id) {
         log.info("Deletando um registro do sistema" + id);
-        var buscarRegistroDelete = repository.findById(id);
 
-        if(buscarRegistroDelete.isEmpty())
-            return ResponseEntity.notFound().build();;
-
-            repository.delete(buscarRegistroDelete.get());
+            repository.delete(getRegistro(id));
 
             return ResponseEntity.noContent().build();
+    }
+
+    private Registro getRegistro(Integer id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new RestNotFoundException("registro não encontrada"));
     }
 }

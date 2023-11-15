@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.fiap.global.baze.excepions.RestNotFoundException;
 import br.com.fiap.global.baze.model.Usuario;
 import br.com.fiap.global.baze.repository.UsuarioRepository;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/usuarios")
@@ -38,7 +40,7 @@ public class UsuarioController {
 
     // Cadastro
     @PostMapping
-    public ResponseEntity<Usuario> create(@RequestBody Usuario usuario) {
+    public ResponseEntity<Usuario> create(@RequestBody @Valid Usuario usuario) {
         log.info("Cadastrando um usuario" + usuario);
 
         repository.save(usuario);
@@ -51,24 +53,17 @@ public class UsuarioController {
     public ResponseEntity<Usuario> show(@PathVariable Integer id) {
 
         log.info("buscando um usuario por id" + id);
-        var buscarUsuario = repository.findById(id);
-        
-        if(buscarUsuario.isEmpty())
-            return ResponseEntity.notFound().build();
 
-        return ResponseEntity.ok(buscarUsuario.get());
+        return ResponseEntity.ok(getUsuario(id));
     }
 
     // Atualizar
     @PutMapping("{id}")
-    public ResponseEntity<Usuario> update(@PathVariable Integer id, @RequestBody Usuario usuario) {
+    public ResponseEntity<Usuario> update(@PathVariable Integer id, @RequestBody @Valid Usuario usuario) {
 
         log.info("Atualizando as informaçoes do usuario" + id);
 
-        var buscarUsuarioUpdate = repository.findById(id);
-
-        if (buscarUsuarioUpdate.isEmpty())
-            return ResponseEntity.notFound().build();
+            getUsuario(id);
            
             usuario.setId(id);
             repository.save(usuario);
@@ -80,13 +75,14 @@ public class UsuarioController {
     @DeleteMapping("{id}")
     public ResponseEntity<Usuario> destroy(@PathVariable Integer id) {
         log.info("Deletando um usuario do sistema" + id);
-        var buscarUsuarioDelete = repository.findById(id);
 
-        if(buscarUsuarioDelete.isEmpty())
-            return ResponseEntity.notFound().build();;
-
-            repository.delete(buscarUsuarioDelete.get());
+            repository.delete(getUsuario(id));
 
             return ResponseEntity.noContent().build();
+    }
+
+    private Usuario getUsuario(Integer id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new RestNotFoundException("telefone não encontrada"));
     }
 }

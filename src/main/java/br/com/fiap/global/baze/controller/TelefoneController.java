@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.fiap.global.baze.excepions.RestNotFoundException;
 import br.com.fiap.global.baze.model.Telefone;
 import br.com.fiap.global.baze.repository.TelefoneRepository;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/telefones")
@@ -38,7 +40,7 @@ public class TelefoneController {
 
     // Cadastro
     @PostMapping
-    public ResponseEntity<Telefone> create(@RequestBody Telefone telefone) {
+    public ResponseEntity<Telefone> create(@RequestBody @Valid Telefone telefone) {
         log.info("Cadastrando um telefone" + telefone);
 
         repository.save(telefone);
@@ -51,25 +53,18 @@ public class TelefoneController {
     public ResponseEntity<Telefone> show(@PathVariable Integer id) {
 
         log.info("buscando um telefone por id" + id);
-        var buscarTelefone = repository.findById(id);
-        
-        if(buscarTelefone.isEmpty())
-            return ResponseEntity.notFound().build();
 
-        return ResponseEntity.ok(buscarTelefone.get());
+        return ResponseEntity.ok(getTelefone(id));
     }
 
     // Atualizar
     @PutMapping("{id}")
-    public ResponseEntity<Telefone> update(@PathVariable Integer id, @RequestBody Telefone telefone) {
+    public ResponseEntity<Telefone> update(@PathVariable Integer id, @RequestBody @Valid Telefone telefone) {
 
         log.info("Atualizando as informaçoes do Telefone" + id);
 
-        var buscarTelefoneUpdate = repository.findById(id);
+            getTelefone(id);
 
-        if (buscarTelefoneUpdate.isEmpty())
-            return ResponseEntity.notFound().build();
-           
             telefone.setId(id);
             repository.save(telefone);
 
@@ -80,13 +75,14 @@ public class TelefoneController {
     @DeleteMapping("{id}")
     public ResponseEntity<Telefone> destroy(@PathVariable Integer id) {
         log.info("Deletando um telefone do sistema" + id);
-        var buscarTelefoneDelete = repository.findById(id);
 
-        if(buscarTelefoneDelete.isEmpty())
-            return ResponseEntity.notFound().build();;
-
-            repository.delete(buscarTelefoneDelete.get());
+            repository.delete(getTelefone(id));
 
             return ResponseEntity.noContent().build();
+    }
+
+    private Telefone getTelefone(Integer id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new RestNotFoundException("telefone não encontrada"));
     }
 }

@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.fiap.global.baze.excepions.RestNotFoundException;
 import br.com.fiap.global.baze.model.Corrida;
 import br.com.fiap.global.baze.repository.CorridaRepository;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/corridas")
@@ -38,7 +40,7 @@ public class CorridaController {
 
     // Cadastro
     @PostMapping
-    public ResponseEntity<Corrida> create(@RequestBody Corrida corrida) {
+    public ResponseEntity<Corrida> create(@RequestBody @Valid Corrida corrida) {
         log.info("Cadastrando uma corrida" + corrida);
 
         repository.save(corrida);
@@ -51,24 +53,17 @@ public class CorridaController {
     public ResponseEntity<Corrida> show(@PathVariable Integer id) {
 
         log.info("buscando uma corrida feita por id" + id);
-        var buscaCorrida = repository.findById(id);
-        
-        if(buscaCorrida.isEmpty())
-            return ResponseEntity.notFound().build();
 
-        return ResponseEntity.ok(buscaCorrida.get());
+        return ResponseEntity.ok(getCorrida(id));
     }
 
     // Atualizar
     @PutMapping("{id}")
-    public ResponseEntity<Corrida> update(@PathVariable Integer id, @RequestBody Corrida corrida) {
+    public ResponseEntity<Corrida> update(@PathVariable Integer id, @RequestBody @Valid Corrida corrida) {
 
         log.info("Atualizando as informaçoes da corrida feita" + id);
 
-        var buscaCorridaUpdate = repository.findById(id);
-
-        if (buscaCorridaUpdate.isEmpty())
-            return ResponseEntity.notFound().build();
+            getCorrida(id);
            
             corrida.setId(id);
             repository.save(corrida);
@@ -80,13 +75,14 @@ public class CorridaController {
     @DeleteMapping("{id}")
     public ResponseEntity<Corrida> destroy(@PathVariable Integer id) {
         log.info("Deletando uma corrida do sistema" + id);
-        var buscaCorridaDelete = repository.findById(id);
 
-        if(buscaCorridaDelete.isEmpty())
-            return ResponseEntity.notFound().build();;
-
-            repository.delete(buscaCorridaDelete.get());
+            repository.delete(getCorrida(id));
 
             return ResponseEntity.noContent().build();
+    }
+
+    private Corrida getCorrida(Integer id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new RestNotFoundException("corrida não encontrada"));
     }
 }

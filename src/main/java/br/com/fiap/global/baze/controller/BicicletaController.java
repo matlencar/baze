@@ -17,9 +17,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.fiap.global.baze.excepions.RestNotFoundException;
 import br.com.fiap.global.baze.model.Bicicleta;
-
 import br.com.fiap.global.baze.repository.BicicletaRepository;
+import jakarta.validation.Valid;
 
 
 @RestController
@@ -40,7 +41,7 @@ public class BicicletaController {
 
     // Cadastro
     @PostMapping
-    public ResponseEntity<Bicicleta> create(@RequestBody Bicicleta bike) {
+    public ResponseEntity<Bicicleta> create(@RequestBody @Valid Bicicleta bike) {
         log.info("Cadastrando uma bicicleta" + bike);
 
         repository.save(bike);
@@ -53,24 +54,17 @@ public class BicicletaController {
     public ResponseEntity<Bicicleta> show(@PathVariable Integer id) {
 
         log.info("buscando bicicleta por id" + id);
-        var buscaBicicleta = repository.findById(id);
-        
-        if(buscaBicicleta.isEmpty())
-            return ResponseEntity.notFound().build();
 
-        return ResponseEntity.ok(buscaBicicleta.get());
+        return ResponseEntity.ok(getBicicleta(id));
     }
 
     // Atualizar
     @PutMapping("{id}")
-    public ResponseEntity<Bicicleta> update(@PathVariable Integer id, @RequestBody Bicicleta bike) {
+    public ResponseEntity<Bicicleta> update(@PathVariable Integer id, @RequestBody @Valid Bicicleta bike) {
 
         log.info("Atualizando as informaçoes da bicicleta" + id);
 
-        var buscaBicicletaUpdate = repository.findById(id);
-
-        if (buscaBicicletaUpdate.isEmpty())
-            return ResponseEntity.notFound().build();
+            getBicicleta(id);
            
             bike.setId(id);
             repository.save(bike);
@@ -82,13 +76,14 @@ public class BicicletaController {
     @DeleteMapping("{id}")
     public ResponseEntity<Bicicleta> destroy(@PathVariable Integer id) {
         log.info("Deletando uma bicicleta" + id);
-        var buscaBicicletaDelete = repository.findById(id);
 
-        if(buscaBicicletaDelete.isEmpty())
-            return ResponseEntity.notFound().build();;
-
-            repository.delete(buscaBicicletaDelete.get());
+            repository.delete(getBicicleta(id));
 
             return ResponseEntity.noContent().build();
+    }
+
+    private Bicicleta getBicicleta(Integer id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new RestNotFoundException("bicicleta não encontrada"));
     }
 }
