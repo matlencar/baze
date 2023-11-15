@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import br.com.fiap.global.baze.excepions.RestNotFoundException;
 import br.com.fiap.global.baze.model.Bicicleta;
 import br.com.fiap.global.baze.repository.BicicletaRepository;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
 
@@ -81,8 +82,11 @@ public class BicicletaController {
             return ResponseEntity.noContent().build();
     }
 
+    @Transactional
     private Bicicleta getBicicleta(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new RestNotFoundException("bicicleta não encontrada"));
+
     }
+    
 }
