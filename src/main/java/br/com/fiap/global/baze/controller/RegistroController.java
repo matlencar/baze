@@ -50,7 +50,7 @@ public class RegistroController {
 
     // Busca por ID
     @GetMapping("{id}")
-    public ResponseEntity<Registro> show(@PathVariable Integer id) {
+    public ResponseEntity<Registro> show(@PathVariable Long id) {
 
         log.info("buscando um registro por id" + id);
 
@@ -59,7 +59,7 @@ public class RegistroController {
 
     // Atualizar
     @PutMapping("{id}")
-    public ResponseEntity<Registro> update(@PathVariable Integer id, @RequestBody @Valid Registro registro) {
+    public ResponseEntity<Registro> update(@PathVariable Long id, @RequestBody @Valid Registro registro) {
 
         log.info("Atualizando as informaçoes do registro" + id);
            
@@ -73,7 +73,7 @@ public class RegistroController {
 
     // Deletar
     @DeleteMapping("{id}")
-    public ResponseEntity<Registro> destroy(@PathVariable Integer id) {
+    public ResponseEntity<Registro> destroy(@PathVariable Long id) {
         log.info("Deletando um registro do sistema" + id);
 
             repository.delete(getRegistro(id));
@@ -81,7 +81,7 @@ public class RegistroController {
             return ResponseEntity.noContent().build();
     }
 
-    private Registro getRegistro(Integer id) {
+    private Registro getRegistro(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new RestNotFoundException("registro não encontrada"));
     }

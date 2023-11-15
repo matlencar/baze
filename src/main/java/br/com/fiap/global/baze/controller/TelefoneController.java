@@ -50,7 +50,7 @@ public class TelefoneController {
 
     // Busca por ID
     @GetMapping("{id}")
-    public ResponseEntity<Telefone> show(@PathVariable Integer id) {
+    public ResponseEntity<Telefone> show(@PathVariable Long id) {
 
         log.info("buscando um telefone por id" + id);
 
@@ -59,7 +59,7 @@ public class TelefoneController {
 
     // Atualizar
     @PutMapping("{id}")
-    public ResponseEntity<Telefone> update(@PathVariable Integer id, @RequestBody @Valid Telefone telefone) {
+    public ResponseEntity<Telefone> update(@PathVariable Long id, @RequestBody @Valid Telefone telefone) {
 
         log.info("Atualizando as informaçoes do Telefone" + id);
 
@@ -73,7 +73,7 @@ public class TelefoneController {
 
     // Deletar
     @DeleteMapping("{id}")
-    public ResponseEntity<Telefone> destroy(@PathVariable Integer id) {
+    public ResponseEntity<Telefone> destroy(@PathVariable Long id) {
         log.info("Deletando um telefone do sistema" + id);
 
             repository.delete(getTelefone(id));
@@ -81,7 +81,7 @@ public class TelefoneController {
             return ResponseEntity.noContent().build();
     }
 
-    private Telefone getTelefone(Integer id) {
+    private Telefone getTelefone(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new RestNotFoundException("telefone não encontrada"));
     }

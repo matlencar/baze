@@ -51,7 +51,7 @@ public class EnderecoController {
 
     // Busca por ID
     @GetMapping("{id}")
-    public ResponseEntity<Endereco> show(@PathVariable Integer id) {
+    public ResponseEntity<Endereco> show(@PathVariable Long id) {
 
         log.info("buscando um endereco por id" + id);
 
@@ -60,7 +60,7 @@ public class EnderecoController {
 
     // Atualizar
     @PutMapping("{id}")
-    public ResponseEntity<Endereco> update(@PathVariable Integer id, @RequestBody @Valid Endereco endereco) {
+    public ResponseEntity<Endereco> update(@PathVariable Long id, @RequestBody @Valid Endereco endereco) {
 
         log.info("Atualizando as informaçoes do endereco" + id);
 
@@ -73,7 +73,7 @@ public class EnderecoController {
 
     // Deletar
     @DeleteMapping("{id}")
-    public ResponseEntity<Endereco> destroy(@PathVariable Integer id) {
+    public ResponseEntity<Endereco> destroy(@PathVariable Long id) {
         log.info("Deletando um endereco do sistema" + id);
 
             repository.delete(getEndereco(id));
@@ -81,7 +81,7 @@ public class EnderecoController {
             return ResponseEntity.noContent().build();
     }
 
-    private Endereco getEndereco(Integer id) {
+    private Endereco getEndereco(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new RestNotFoundException("endereço não encontrada"));
     }

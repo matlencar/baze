@@ -47,14 +47,14 @@ public class DesafioController {
 
     // Busca por ID
     @GetMapping("{id}")
-    public ResponseEntity<Desafio> show(@PathVariable Integer id) {
+    public ResponseEntity<Desafio> show(@PathVariable Long id) {
         log.info("buscando desafio por id" + id);
         return ResponseEntity.ok(getDesafio(id));
     }
 
     // Atualizar
     @PutMapping("{id}")
-    public ResponseEntity<Desafio> update(@PathVariable Integer id, @RequestBody @Valid Desafio desafio) {
+    public ResponseEntity<Desafio> update(@PathVariable Long id, @RequestBody @Valid Desafio desafio) {
 
         log.info("Atualizando o desafio" + id);
         getDesafio(id);
@@ -67,7 +67,7 @@ public class DesafioController {
 
     // Deletar
     @DeleteMapping("{id}")
-    public ResponseEntity<Desafio> destroy(@PathVariable Integer id) {
+    public ResponseEntity<Desafio> destroy(@PathVariable Long id) {
         log.info("Deletando um desafio" + id);
 
             repository.delete(getDesafio(id));
@@ -75,7 +75,7 @@ public class DesafioController {
             return ResponseEntity.noContent().build();
     }
 
-    private Desafio getDesafio(Integer id) {
+    private Desafio getDesafio(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new RestNotFoundException("desafio não encontrada"));
     }

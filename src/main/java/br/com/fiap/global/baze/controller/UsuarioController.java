@@ -50,7 +50,7 @@ public class UsuarioController {
 
     // Busca por ID
     @GetMapping("{id}")
-    public ResponseEntity<Usuario> show(@PathVariable Integer id) {
+    public ResponseEntity<Usuario> show(@PathVariable Long id) {
 
         log.info("buscando um usuario por id" + id);
 
@@ -59,7 +59,7 @@ public class UsuarioController {
 
     // Atualizar
     @PutMapping("{id}")
-    public ResponseEntity<Usuario> update(@PathVariable Integer id, @RequestBody @Valid Usuario usuario) {
+    public ResponseEntity<Usuario> update(@PathVariable Long id, @RequestBody @Valid Usuario usuario) {
 
         log.info("Atualizando as informaçoes do usuario" + id);
 
@@ -73,7 +73,7 @@ public class UsuarioController {
 
     // Deletar
     @DeleteMapping("{id}")
-    public ResponseEntity<Usuario> destroy(@PathVariable Integer id) {
+    public ResponseEntity<Usuario> destroy(@PathVariable Long id) {
         log.info("Deletando um usuario do sistema" + id);
 
             repository.delete(getUsuario(id));
@@ -81,7 +81,7 @@ public class UsuarioController {
             return ResponseEntity.noContent().build();
     }
 
-    private Usuario getUsuario(Integer id) {
+    private Usuario getUsuario(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new RestNotFoundException("telefone não encontrada"));
     }

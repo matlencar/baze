@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.fiap.global.baze.model.Corrida;
 
-public interface CorridaRepository extends JpaRepository<Corrida, Integer> {
+public interface CorridaRepository extends JpaRepository<Corrida, Long> {
     
 }

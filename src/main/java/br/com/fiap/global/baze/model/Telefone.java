@@ -22,7 +22,7 @@ public class Telefone {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @NotBlank
     private  String telefone;

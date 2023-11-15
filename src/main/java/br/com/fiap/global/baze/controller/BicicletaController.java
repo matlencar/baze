@@ -42,16 +42,15 @@ public class BicicletaController {
     // Cadastro
     @PostMapping
     public ResponseEntity<Bicicleta> create(@RequestBody @Valid Bicicleta bike) {
+        
         log.info("Cadastrando uma bicicleta" + bike);
-
         repository.save(bike);
-
         return ResponseEntity.status(HttpStatus.CREATED).body(bike);
     }
 
     // Busca por ID
     @GetMapping("{id}")
-    public ResponseEntity<Bicicleta> show(@PathVariable Integer id) {
+    public ResponseEntity<Bicicleta> show(@PathVariable Long id) {
 
         log.info("buscando bicicleta por id" + id);
 
@@ -60,7 +59,7 @@ public class BicicletaController {
 
     // Atualizar
     @PutMapping("{id}")
-    public ResponseEntity<Bicicleta> update(@PathVariable Integer id, @RequestBody @Valid Bicicleta bike) {
+    public ResponseEntity<Bicicleta> update(@PathVariable Long id, @RequestBody @Valid Bicicleta bike) {
 
         log.info("Atualizando as informaçoes da bicicleta" + id);
 
@@ -74,7 +73,7 @@ public class BicicletaController {
 
     // Deletar
     @DeleteMapping("{id}")
-    public ResponseEntity<Bicicleta> destroy(@PathVariable Integer id) {
+    public ResponseEntity<Bicicleta> destroy(@PathVariable Long id) {
         log.info("Deletando uma bicicleta" + id);
 
             repository.delete(getBicicleta(id));
@@ -82,7 +81,7 @@ public class BicicletaController {
             return ResponseEntity.noContent().build();
     }
 
-    private Bicicleta getBicicleta(Integer id) {
+    private Bicicleta getBicicleta(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new RestNotFoundException("bicicleta não encontrada"));
     }

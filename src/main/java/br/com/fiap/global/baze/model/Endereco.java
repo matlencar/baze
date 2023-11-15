@@ -22,7 +22,7 @@ public class Endereco {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @NotBlank
     private String logradouro;

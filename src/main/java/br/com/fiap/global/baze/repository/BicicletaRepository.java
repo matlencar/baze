@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.fiap.global.baze.model.Bicicleta;
 
-public interface BicicletaRepository extends JpaRepository<Bicicleta, Integer> {
+public interface BicicletaRepository extends JpaRepository<Bicicleta, Long> {
     
 }

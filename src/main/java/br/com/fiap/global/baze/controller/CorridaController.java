@@ -50,7 +50,7 @@ public class CorridaController {
 
     // Busca por ID
     @GetMapping("{id}")
-    public ResponseEntity<Corrida> show(@PathVariable Integer id) {
+    public ResponseEntity<Corrida> show(@PathVariable Long id) {
 
         log.info("buscando uma corrida feita por id" + id);
 
@@ -59,7 +59,7 @@ public class CorridaController {
 
     // Atualizar
     @PutMapping("{id}")
-    public ResponseEntity<Corrida> update(@PathVariable Integer id, @RequestBody @Valid Corrida corrida) {
+    public ResponseEntity<Corrida> update(@PathVariable Long id, @RequestBody @Valid Corrida corrida) {
 
         log.info("Atualizando as informaçoes da corrida feita" + id);
 
@@ -73,7 +73,7 @@ public class CorridaController {
 
     // Deletar
     @DeleteMapping("{id}")
-    public ResponseEntity<Corrida> destroy(@PathVariable Integer id) {
+    public ResponseEntity<Corrida> destroy(@PathVariable Long id) {
         log.info("Deletando uma corrida do sistema" + id);
 
             repository.delete(getCorrida(id));
@@ -81,7 +81,7 @@ public class CorridaController {
             return ResponseEntity.noContent().build();
     }
 
-    private Corrida getCorrida(Integer id) {
+    private Corrida getCorrida(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new RestNotFoundException("corrida não encontrada"));
     }
