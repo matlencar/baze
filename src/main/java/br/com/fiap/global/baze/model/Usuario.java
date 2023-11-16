@@ -10,13 +10,14 @@ import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Getter
-@Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -57,6 +58,6 @@ public class Usuario {
     @NotBlank
     private String genero;
 
-    @OneToMany
-    private List<Bicicleta> bicicletas;
+    // @OneToMany
+    // private List<Bicicleta> bicicletas;
 }

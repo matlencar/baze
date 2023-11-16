@@ -7,14 +7,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Getter
-@Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -26,9 +28,14 @@ public class Registro {
     private Long id;
     
     @NotBlank
+    @Size(min = 1, max = 255)
     private String horaRegistro;
 
-    @ManyToOne // (cascade = CascadeType.MERGE)
-	@JoinColumn // (name = "", nullable = false)
+    @ManyToOne 
+	@JoinColumn 
     private Usuario usuario;
+
+    @ManyToOne 
+	@JoinColumn 
+    private Desafio desafio;
 }

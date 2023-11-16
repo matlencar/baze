@@ -8,13 +8,14 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Getter
-@Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -31,8 +32,7 @@ public class Corrida {
     @NotNull
     private Double tempo;
 
-    @ManyToOne // (cascade = CascadeType.MERGE)
-	@JoinColumn // (name = "", nullable = false)
+    @ManyToOne
+	@JoinColumn 
     private Usuario usuario;
-
 }

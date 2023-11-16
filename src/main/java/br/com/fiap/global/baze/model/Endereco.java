@@ -9,13 +9,14 @@ import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Getter
-@Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -47,7 +48,7 @@ public class Endereco {
     @NotBlank
     private String complemento;
 
-    @ManyToOne // (cascade = CascadeType.MERGE)
-	@JoinColumn // (name = "", nullable = false)
+    @ManyToOne 
+	@JoinColumn 
     private Usuario usuario;
 }

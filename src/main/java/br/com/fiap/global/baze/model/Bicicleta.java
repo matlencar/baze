@@ -11,14 +11,16 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Getter
-@Setter
+// @Setter
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -54,7 +56,7 @@ public class Bicicleta {
     @Column(name = "nr_marcha")
     private int marcha;
 
-    @ManyToOne
-    @JoinColumn(name = "id_usuario")
+    @ManyToOne // (cascade = CascadeType.MERGE)
+	@JoinColumn // (name = "ID_CLIENTE", nullable = false)
     private Usuario usuario;
 }
