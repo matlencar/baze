@@ -14,7 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 
 import br.com.fiap.global.baze.excepions.RestNotFoundException;
 import br.com.fiap.global.baze.model.Desafio;
@@ -33,8 +38,12 @@ public class DesafioController {
     
     // Buscar por todos os desafios
     @GetMapping
-    public List<Desafio> index() {
-        return repository.findAll();
+    public Page<Desafio> index(@RequestParam(required = false) String descricao, @PageableDefault(size = 5) Pageable pageable) {
+
+        if (descricao == null)
+            return repository.findAll(pageable);
+
+        return repository.findByDescricaoContaining(descricao, pageable);
     }
 
     // Cadastro
