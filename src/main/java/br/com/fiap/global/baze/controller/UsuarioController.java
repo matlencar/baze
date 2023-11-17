@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.fiap.global.baze.excepions.RestNotFoundException;
+import br.com.fiap.global.baze.model.Credencial;
 import br.com.fiap.global.baze.model.Usuario;
 import br.com.fiap.global.baze.repository.UsuarioRepository;
+import br.com.fiap.global.baze.service.TokenService;
 import jakarta.validation.Valid;
 
 @RestController
@@ -31,6 +35,23 @@ public class UsuarioController {
     // injeção de dependencia
     @Autowired
     UsuarioRepository repository;
+
+    @Autowired
+    AuthenticationManager manager;
+
+    @Autowired
+    PasswordEncoder encoder;
+
+    @Autowired
+    TokenService tokenService;
+
+    @PostMapping("/login")
+    public ResponseEntity<Object> login(@RequestBody @Valid Credencial credencial) {
+        manager.authenticate(credencial.toAuthentication());
+
+        var token = tokenService.generateToken(credencial);
+        return ResponseEntity.ok(token);
+    }
     
     // Buscar por todas os ids
     @GetMapping
