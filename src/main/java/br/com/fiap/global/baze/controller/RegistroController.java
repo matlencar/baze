@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.fiap.global.baze.excepions.RestNotFoundException;
-import br.com.fiap.global.baze.model.Desafio;
 import br.com.fiap.global.baze.model.Registro;
 import br.com.fiap.global.baze.repository.RegistroRepository;
 import jakarta.validation.Valid;
