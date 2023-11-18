@@ -7,10 +7,15 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -26,6 +31,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
+@Table(name = "T_BAZE_USUARIO")
 public class Usuario implements UserDetails {
 
     @Id
@@ -102,6 +108,7 @@ public class Usuario implements UserDetails {
         return true;
     }
 
-    // @OneToMany
+    // @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
+    // @JsonIgnoreProperties(value = "usuario", allowSetters=true)
     // private List<Bicicleta> bicicletas;
 }

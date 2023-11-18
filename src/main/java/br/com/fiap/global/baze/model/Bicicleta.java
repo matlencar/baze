@@ -56,7 +56,7 @@ public class Bicicleta {
     @Column(name = "nr_marcha")
     private int marcha;
 
-    @ManyToOne // (cascade = CascadeType.MERGE)
-	@JoinColumn // (name = "ID_CLIENTE", nullable = false)
+    @ManyToOne 
+	@JoinColumn 
     private Usuario usuario;
 }
