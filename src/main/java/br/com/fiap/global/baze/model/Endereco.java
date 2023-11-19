@@ -1,5 +1,6 @@
 package br.com.fiap.global.baze.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,24 +31,31 @@ public class Endereco {
     private Long id;
 
     @NotBlank
+    @Column(name = "nm_logradouro")
     private String logradouro;
 
     @NotNull
+    @Column(name = "nr_logradouro")
     private int numero;
 
     @NotBlank
+    @Column(name = "nm_bairro")
     private String bairro;
 
     @NotBlank
+    @Column(name = "nm_cidade")
     private String cidade;
     
     @NotBlank
+    @Column(name = "nm_pais")
     private String pais;
 
     @NotBlank
+    @Column(name = "nr_cep")
     private String cep;
 
     @NotBlank
+    @Column(name = "ds_complemento")
     private String complemento;
 
     @ManyToOne 

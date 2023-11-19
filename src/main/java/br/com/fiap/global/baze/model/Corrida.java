@@ -1,5 +1,6 @@
 package br.com.fiap.global.baze.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,12 +30,14 @@ public class Corrida {
     private Long id;
 
     @NotNull
+    @Column(name = "nr_km")
     private Double km;
 
     @NotNull
+    @Column(name = "nr_tempo")
     private Double tempo;
 
     @ManyToOne
-	@JoinColumn 
+	@JoinColumn
     private Usuario usuario;
 }

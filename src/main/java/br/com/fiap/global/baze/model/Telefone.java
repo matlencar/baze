@@ -1,5 +1,6 @@
 package br.com.fiap.global.baze.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,12 +31,15 @@ public class Telefone {
     private Long id;
 
     @NotBlank
+    @Column(name = "nr_telefone")
     private  String telefone;
 
     @NotNull
+    @Column(name = "nr_ddd")
     private int ddd;
 
     @NotNull
+    @Column(name = "nr_ddi")
     private int ddi;
 
     @ManyToOne 

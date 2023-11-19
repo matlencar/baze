@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -39,36 +40,47 @@ public class Usuario implements UserDetails {
     private Long id;
 
     @NotBlank
+    @Column(name = "nm_usuario")
     private String nome;
 
     @NotBlank
+    @Column(name = "nm_email")
     private String email;
     
     @NotBlank
+    @Column(name = "nm_login")
     private String login;
 
     @NotBlank
+    @Column(name = "nm_senha")
     private String senha;
 
     @NotNull
+    @Column(name = "nr_idade")
     private int idade;
 
     @NotNull
+    @Column(name = "nr_peso")
     private Double peso;
 
     @NotNull
+    @Column(name = "nr_altura")
     private Double altura;
 
     @NotBlank
+    @Column(name = "nr_rg")
     private String rg;
 
     @NotBlank
+    @Column(name = "nr_cpf")
     private String cpf;
 
     @NotBlank
+    @Column(name = "st_cliente")
     private String status;
 
     @NotBlank
+    @Column(name = "tp_genero")
     private String genero;
 
     @Override
