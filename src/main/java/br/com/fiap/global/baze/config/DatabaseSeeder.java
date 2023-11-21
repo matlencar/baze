@@ -49,7 +49,7 @@ public class DatabaseSeeder implements CommandLineRunner {
 
                 Usuario usuario1 = new Usuario(1L, "matheus", "malencar292@gmail.com", "matlencar", "ola@", 29, 45.0, 1.75,
                                 "01923466", "9900776655", "Masculino");
-                Usuario usuario2 = new Usuario(2L, "caio", "karen292@gmail.com", "caiou", "ola@", 22, 45.0, 1.85,
+                Usuario usuario2 = new Usuario(2L, "caio", "caio192@gmail.com", "caiou", "ola@", 22, 45.0, 1.85,
                                 "01923466", "9900776655", "Masculino");
                 Usuario usuario3 = new Usuario(3L, "Karen", "karen292@gmail.com", "Karem","ola@", 18, 55.0, 1.65,
                                 "01923466",
