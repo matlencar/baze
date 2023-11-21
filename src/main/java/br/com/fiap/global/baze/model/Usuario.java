@@ -75,9 +75,9 @@ public class Usuario implements UserDetails {
     @Column(name = "nr_cpf")
     private String cpf;
 
-    // @NotBlank
-    // @Column(name = "st_cliente")
-    // private String status;
+    @NotBlank
+    @Column(name = "st_cliente")
+    private String status;
 
     @NotBlank
     @Column(name = "tp_genero")
