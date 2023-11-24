@@ -59,13 +59,6 @@ public class Usuario implements UserDetails {
     @Column(name = "nr_idade")
     private int idade;
 
-    // @NotNull
-    // @Column(name = "nr_peso")
-    // private Double peso;
-
-    // @NotNull
-    // @Column(name = "nr_altura")
-    // private Double altura;
 
     @NotBlank
     @Column(name = "nr_rg")
@@ -75,9 +68,7 @@ public class Usuario implements UserDetails {
     @Column(name = "nr_cpf")
     private String cpf;
 
-    // @NotBlank
-    // @Column(name = "st_cliente")
-    // private String status;
+    
 
     @NotBlank
     @Column(name = "tp_genero")

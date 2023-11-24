@@ -1,120 +1,73 @@
-# baze
+# Baze
 
-# Sprint Digital Business Enablement 
-
-# ProjetoAssistente GPT
-
-API de gerenciamento e consulta de dados de um e-commerce de computadores e periféricos.
+# Global Solution
 
 
 ## Endpoints
 
-- Cliente
+- Usuario
 
     - [Efetuar login](#login)
     - [Realizar Cadastro](#cadastrar)
-    - [Atualizar Cadastro](#atualizarcliente)
-    - [Deletar Conta](#deletarcliente)
+    - [Atualizar Cadastro](#atualizar)
+    - [Deletar Conta](#deletar)
 
-- Categoria
+- Bicicleta
 
-    - [Listar todas Categorias](#listar_categorias)
-    - [Inserir Categoria](#inserir_categoria)
-    - [Atualizar Categoria](#atualizar_categoria)
-    - [Deletar Categoria](#deletar_categoria)
+    - [Listar todas Categorias](#listar_bicicleta)
+    - [Inserir Categoria](#inserir_bicicleta)
+    - [Atualizar Categoria](#atualizar_bicicleta)
+    - [Deletar Categoria](#deletar_bicicleta)
 
-- Compra
+- Corrida
 
-    - [Listar todas Compras](#listar_todas_compras)
-    - [Listar todas Compras por Usuario](#listar_compras_usuario)
-    - [Registrar Compra](#registrar_compra)
-    - [Atualizar Compra](#atualizar_compra)
+    - [Listar todas Compras](#listar_corrida)
+    - [Listar todas Compras por Usuario](#listar_corrida)
+    - [Registrar Compra](#registrar_corrida)
+    - [Atualizar Compra](#atualizar_corrida)
 
-- Empresa
+- Desafio
 
-    - [Listar todas Empresas](#listar_empresas)
-    - [Cadastra Empresa](#cadastrar_empresa)
-    - [pesquisa empresa](#pesquisar_empresa)
-    - [Atualizar dados da Empresa](#atualizar_empresa)
-    - [Deletar Empresa](#deletar_empresa)
+    - [Listar todas Empresas](#listar_desafio)
+    - [Cadastra Empresa](#cadastrar_desafio)
+    - [pesquisa empresa](#pesquisar_desafio)
+    - [Atualizar dados da Empresa](#atualizar_desafio)
+    - [Deletar Empresa](#deletar_desafio)
     
-- Endereço Cliente
+- Endereço
 
-    - [Cadastra Endereço de um cliente](#cadastrar_endereco_cliente)
-    - [Mostra endereços de um cliente](#mostra_endereco_cliente)
-    - [Atualizar endereço de um cliente](#atualiza_endereco_cliente)
-    - [Deletar endereço de um cliente](#deleta_endereco_cliente)
+    - [Cadastra Endereço de um cliente](#cadastrar_endereco)
+    - [Mostra endereços de um cliente](#mostra_endereco)
+    - [Atualizar endereço de um cliente](#atualiza_endereco)
+    - [Deletar endereço de um cliente](#deleta_endereco)
 
-- Endereço Empresa
+- Registro
 
-    - [Cadastra Endereço de uma empresa](#cadastrar_endereco_empresa)
-    - [Mostra endereços de uma empresa](#mostra_endereco_empresa)
-    - [Atualizar endereço da empresa](#atualiza_endereco_empresa)
-    - [Deletar endereço da empresa](#deleta_endereco_empresa)
+    - [Cadastra Endereço de uma empresa](#cadastrar_registro)
+    - [Mostra endereços de uma empresa](#mostra_registro)
+    - [Atualizar endereço da empresa](#atualiza_registro)
+    - [Deletar endereço da empresa](#deleta_registro)
 
-- Endereço Transportadora
+- Telefone 
 
-    - [Cadastra Endereço de uma Transportadora](#cadastrar_endereco_transportadora)
-    - [Mostra endereços de uma Transportadora](#mostra_endereco_transportadora)
-    - [Atualizar endereço da Transportadora](#atualiza_endereco_transportadora)
-    - [Deletar endereço da Transportadora](#deleta_endereco_transportadora)
-
-- Marca
-
-    - [Cadastra uma marca](#cadastrar_marca)
-    - [mostra todas as marcas](#mostrar_marcas)
-    - [pesquisa marca](#pesquisar_marca)
-    - [Atualizar dados de uma marca](#atualizar_marca)
-    - [Deletar uma marca](#deletar_marca)
-
-- Produto
-
-    - [Cadastra um produto](#cadastrar_produto)
-    - [mostra todos os produtos cadastrados](#mostrar_produtos)
-    - [pesquisa produto](#pesquisar_produto)
-    - [Atualizar dados de um produto](#atulizar_produto)
-    - [Deletar um produto](#deletar_produto)
-    
-- Transportadora
-
-    - [Cadastra Transportadoras](#cadastrar_transportadora)
-    - [Mostra as transportadoras](#mostrar_transportadoras)
-    - [Atualizar as informações das transportadoras](#atualizar_transportadora)
-    - [Deletar transportadoras](#deletar_transportadora)
+    - [Cadastra telefone de usuario](#cadastrar_telefone)
+    - [Mostra telefone de um usuario](#mostrar_telefone)
+    - [Atualiza telefone de um usuario](#atualiza_telefone)
+    - [Deleta Telefone de um usuario](#deletar_telefone)
 
 
-- Telefone Cliente
-
-    - [Cadastra telefone de cliente](#cadastratelefonecliente)
-    - [Mostra telefone de um cliente](#mostratelefonecliente)
-    - [Atualiza telefone de um cliente](#atualiza_telefone_cliente)
-    - [Deleta Telefone de um cliente](#deletar_telefone_cliente)
-
-- Telefone Empresa
-
-    - [Cadastrar telefone de empresa](#cadastrartelefoneempresa)
-    - [Mostra telefone de um empresa](#mostratelefoneempresa)
-    - [Atualiza telefone de uma empresa](#atualiza_telefone_empresa)
-    - [Deleta Telefone de uma empresa](#deletar_telefone_cliente)
-
-- Telefone Transportadora
-
-    - [Cadastra telefone de transportadora](#cadastratelefonetransportadora)
-    - [Mostra telefone de uma transportadora](#mostratelefonetransportadora)
-    - [Atualiza telefone de uma transportadora](#atualizar_telefone_transportadora)
-    - [Deleta Telefone de uma transportadora](#deletar_telefone_transportadora)
 ---
 ### Descrição dos Endpoints
 
-## Cliente
+## Usuario
 
 ### Login
 
-`GET` /baze-webapp.azurewebsites.net/api/usuarios/login
+`GET` http://localhost:8080/api/usuarios/login
 
 ```js
 {
-    usuario: "matlencar",
+    login: "matlencar",
     senha: "ola"
 }
 ```
@@ -129,7 +82,7 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 ---
 ### Cadastrar
     
-`POST` /baze-webapp.azurewebsites.net/api/usuarios
+`POST` http://localhost:8080/api/usuarios
 
 |    Campo     | Tipo | Obrigatorio | Descrição
 |--------------|------|:-----------:|----------|
@@ -167,7 +120,7 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 ---
 ### Atualizar_Usuario
 
-`PUT` /baze-webapp.azurewebsites.net/api/usuarios/{id}
+`PUT` http://localhost:8080/api/usuarios/{id}
 
 |    Campo     | Tipo | Obrigatorio | Descrição
 |--------------|------|:-----------:|----------|
@@ -205,7 +158,7 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 ---
 
 ### Deletar_Usuario
-`DELETE` /localhost/api/cliente/{id}
+`DELETE` /localhost/api/usuarios/{id}
 
 
 ```js
@@ -230,13 +183,17 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 
 ### Listar_Bicicleta
 
-`GET` /localhost/api/bicicleta
+`GET` http://localhost:8080/api/bicicletas
 
 ```js
 {
     id:1
-    nome: "Placa mãe",
-    descricao: "Componentes para hardware de computadores"
+    aro: "15",
+    quadro: 12,
+    peso: "M",
+    cor: "Vermelha",
+    tipo: "Bicicleta mountain bike",
+    marcha: 6
 }
 ```
 ## Respostas que podem aparecer no GET :
@@ -250,20 +207,28 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 ---
 ### Inserir_Categoria
 
-`POST` /localhost/api/categoria
+`POST` /localhost/api/bicicletas
 
 |    Campo     | Tipo | Obrigatorio | Descrição
 |--------------|------|:-----------:|----------|
-|id |Integer|sim|Gerado automaticamente pela aplicação
-|     Nome     |String|     Sim     |Campo para preenchimento do nome da categoria que sera inserida
-|   Descricao  |String|     Sim     |Campo para preenchimento das descrição da categoria
+|     Aro      |String|     Sim     |Campo para preenchiment para informçoes da bicicleta
+|   Quadro     |String|     Sim     |Campo para preenchimento das descrição da bicicleta
+|     Peso     |String|     Sim     |Campo para preenchiment para informçoes da bicicleta
+|   Altura     |String|     Sim     |Campo para preenchimento das descrição da bicicleta
+|     Cor      |String|     Sim     |Campo para preenchiment para informçoes da bicicleta
+|   Tipo       |String|     Sim     |Campo para preenchimento das descrição da bicicleta
+|   Marcha     |String|     Sim     |Campo para preenchimento das descrição da bicicleta
 
 ```js
 {
-    id:1
-    nome: "Placa mãe",
-    descricao: "Componentes para hardware de computadores"
+    "aro": "15",
+    "quadro": 12,
+    "peso": "M",
+    "cor": "Vermelha",
+    "tipo": "Bicicleta mountain bike",
+    "marcha": 6
 }
+
 ```
 ## Respostas que podem aparecer no POST :
 
@@ -275,21 +240,30 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 | `404` | Registro pesquisado não encontrado (Not found)|
 | `500` | Internal server error|
 ---
-### Atualizar_Categoria
+### Atualizar_Bicicleta
 
-`PUT` /localhost/api/categoria
+`PUT` /localhost/api/bicicletas
 
 |    Campo     | Tipo | Obrigatorio | Descrição
 |--------------|------|:-----------:|----------|
-|id |Integer|sim|Gerado automaticamente pela aplicação
-|     Nome     |String|     Sim     |Campo para preenchimento do nome da categoria que sera inserida
-|   Descricao  |String|     Sim     |Campo para preenchimento das descrição da categoria
+|     Aro      |String|     Sim     |Campo para preenchiment para informçoes da bicicleta
+|   Quadro     |String|     Sim     |Campo para preenchimento das descrição da bicicleta
+|     Peso     |String|     Sim     |Campo para preenchiment para informçoes da bicicleta
+|   Altura     |String|     Sim     |Campo para preenchimento das descrição da bicicleta
+|     Cor      |String|     Sim     |Campo para preenchiment para informçoes da bicicleta
+|   Tipo       |String|     Sim     |Campo para preenchimento das descrição da bicicleta
+|   Marcha     |String|     Sim     |Campo para preenchimento das descrição da bicicleta
+
 ```js
 {
-    id:1
-    nome: "Placa mãe",
-    descricao: "Componentes para hardware de computadores"
+    "aro": "15",
+    "quadro": 12,
+    "peso": "M",
+    "cor": "Vermelha",
+    "tipo": "Bicicleta mountain bike",
+    "marcha": 6
 }
+
 ```
 ## Respostas que podem aparecer no PUT :
 
@@ -301,9 +275,9 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 | `404` | Registro pesquisado não encontrado (Not found)|
 | `500` | Internal server error|
 ---
-### Deletar_Categoria
+### Deletar_Bicicleta
 
-`DELETE` /localhost/api/categoria/{id}
+`DELETE` /localhost/api/bicicletas/{id}
 
 
 ```js
@@ -322,92 +296,16 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 | `404` | Registro pesquisado não encontrado (Not found)|
 | `500` | Internal server error|
 ---
-## Compra
+## Corrida
 
-### Listar_Todas_Compras
-`GET` /localhost/api/compras/
+### Listar_corrida
+`GET` /localhost/api/corridas/
 
 ```js
-{
+   {
     id:"1",
-    data: "11/12/20",
-    hora: "14:30"
-    cliente: {
-        id: 1,
-        nome: "Pedro Henrique Sanagiotto",
-        email: "pedro@gemail.com",
-        CPF: "111.222.444-10",
-        RG: "33.123.987-8",
-        senha: "12345@abc",
-        data_de_nascimento: "20/09/2002",
-        status: "A"
-        nomeSocial:"Pedrinho";
-        Telefone_Cliente:{
-            telefone: "97978-5131",
-            ddd: "11"
-            ddi:"15",
-            Status: "A",
-        },
-        endereco_Cliente:{
-            id:1
-            cep:"00000-000"
-            logradouro:"Rua Lins dVasconcelos"
-            bairro:"Aclimação"
-            pais:"brasil"
-            numero:1011
-            status:"A"
-            complemento:"ap 42A"
-        }
-    }
-    produto:{
-        id:1,
-        nome:"computador",
-        descricao:"Computador high tech",
-        estrelas:5,
-        numeroAvaliacoes:2,
-        preco:1000.00,
-        precoFrete:9.99
-        categoria:{
-            id:1
-            nome: "Placa mãe",
-            descricao: "Componentes para hardware de computadores"
-        }
-        empresa:{
-            id:1,
-            nome:"computador Co",
-            razaoSocial:"Computadores Co",
-            numeroAvaliacao:5
-            enderecoEmpresa:{
-                id:1
-                cep:"00000-000"
-                logradouro:"Rua Lins de Vasconcelos"
-                bairro:"Aclimação"
-                pais:"brasil"
-                numero:1011
-                status:"A"
-                complemento:"ap 42A"
-            }
-            telefoneEmpresa:{
-                id:1
-                telefone:"99999-9999"
-                ddd:"011",
-                ddi:"+55"
-                status:"A"
-            }
-        }
-        transportadora:{
-            id:1,
-            nome:"Sedex",
-            descricao:"Entrega super rápida",
-            numeroNota:5
-        }
-        marca:{
-            id:1,
-            nome:"nieke",
-            descricao:"produto bom e barato",
-            nota:5,
-        }
-    }
+    km: 10.0,
+    tempo: 12.00
 }
 ```
 
@@ -422,61 +320,12 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 
 ---
 ### Listar_Compras_Usuario
-`GET` /localhost/api/compras/{id}
+`GET` /localhost/api/corridas/{id}
 ```js
-{
+   {
     id:"1",
-    data: "11/12/20",
-    hora: "14:30"
-    produto:{
-        id:1,
-        nome:"computador",
-        descricao:"Computador high tech",
-        estrelas:5,
-        numeroAvaliacoes:2,
-        preco:1000.00,
-        precoFrete:9.99
-        categoria:{
-            id:1
-            nome: "Placa mãe",
-            descricao: "Componentes para hardware de computadores"
-        }
-        empresa:{
-            id:1,
-            nome:"computador Co",
-            razaoSocial:"Computadores Co",
-            numeroAvaliacao:5
-            enderecoEmpresa:{
-                id:1
-                cep:"00000-000"
-                logradouro:"Rua Lins de Vasconcelos"
-                bairro:"Aclimação"
-                pais:"brasil"
-                numero:1011
-                status:"A"
-                complemento:"ap 42A"
-            }
-            telefoneEmpresa:{
-                id:1
-                telefone:"99999-9999"
-                ddd:"011",
-                ddi:"+55"
-                status:"A"
-            }
-        }
-        transportadora:{
-            id:1,
-            nome:"Sedex",
-            descricao:"Entrega super rápida",
-            numeroNota:5
-        }
-        marca:{
-            id:1,
-            nome:"nieke",
-            descricao:"produto bom e barato",
-            nota:5,
-        }
-    }
+    km: 10.0,
+    tempo: 12.00
 }
 ```
 ## Respostas que podem aparecer no GET :
@@ -489,98 +338,18 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 | `500` | Internal server error|
 ---
 
-### Registrar_Compra
-`POST` /localhost/api/compras
+### Registrar_corrida
+`POST` /localhost/api/corridas
 
 |    Campo     | Tipo | Obrigatorio | Descrição
 |--------------|------|:-----------:|----------|
-|   ID       |Interger|     Sim     |Gerado automaticamente pela aplicação
-| Data |String|     Sim     |Necessario para cadastrar uma compra
-|hora|String|     Sim     | Registro da hora da compra
-|   Cliente  |object|     Sim     | Objeto que se refere o Cliente da compra com ID, nome, email, CPF, RG, senha, data de nascimento, status, nome social, telefone e endereço
-|Produto |object|sim| Objeto que se refere ao produto da compra com id, nome, descricao, estrelas, numerod e avaliacoes, preco, preço frete, categoria, empresa, transportadora e marca
-```js
+|      Km      |String|     Sim     | conta quilometros
+|     tempo    |String|     Sim     | Registro da hora da corrida
 
+```js
 {
-    id:"1",
-    data: "11/12/20",
-    hora: "14:30"
-    cliente: {
-        id: 1,
-        nome: "Pedro Henrique Sanagiotto",
-        email: "pedro@gemail.com",
-        CPF: "111.222.444-10",
-        RG: "33.123.987-8",
-        senha: "12345@abc",
-        data_de_nascimento: "20/09/2002",
-        status: "A"
-        nomeSocial:"Pedrinho";
-        Telefone_Cliente:{
-            telefone: "97978-5131",
-            ddd: "11"
-            ddi:"15",
-            Status: "A",
-        },
-        endereco_Cliente:{
-            id:1
-            cep:"00000-000"
-            logradouro:"Rua Lins dVasconcelos"
-            bairro:"Aclimação"
-            pais:"brasil"
-            numero:1011
-            status:"A"
-            complemento:"ap 42A"
-        }
-    }
-    produto:{
-        id:1,
-        nome:"computador",
-        descricao:"Computador high tech",
-        estrelas:5,
-        numeroAvaliacoes:2,
-        preco:1000.00,
-        precoFrete:9.99
-        categoria:{
-            id:1
-            nome: "Placa mãe",
-            descricao: "Componentes para hardware de computadores"
-        }
-        empresa:{
-            id:1,
-            nome:"computador Co",
-            razaoSocial:"Computadores Co",
-            numeroAvaliacao:5
-            enderecoEmpresa:{
-                id:1
-                cep:"00000-000"
-                logradouro:"Rua Lins de Vasconcelos"
-                bairro:"Aclimação"
-                pais:"brasil"
-                numero:1011
-                status:"A"
-                complemento:"ap 42A"
-            }
-            telefoneEmpresa:{
-                id:1
-                telefone:"99999-9999"
-                ddd:"011",
-                ddi:"+55"
-                status:"A"
-            }
-        }
-        transportadora:{
-            id:1,
-            nome:"Sedex",
-            descricao:"Entrega super rápida",
-            numeroNota:5
-        }
-        marca:{
-            id:1,
-            nome:"nieke",
-            descricao:"produto bom e barato",
-            nota:5,
-        }
-    }
+    "km": 10.0,
+    "tempo": 12.00
 }
 ```
 
@@ -595,81 +364,18 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 | `500` | Internal server error|
 ---
 
-### Atualizar_Compra
-`PUT` /localhost/api/compras/{id}
+### Atualizar_corrida
+`PUT` /localhost/api/corridas/{id}
 
 |    Campo     | Tipo | Obrigatorio | Descrição
 |--------------|------|:-----------:|----------|
-|   ID       |Interger|     Sim     |Gerado automaticamente pela aplicação
-| Data |String|     Sim     |Necessario para cadastrar uma compra
-|hora|String|     Sim     | Registro da hora da compra
-|   Cliente  |object|     Sim     | Objeto que se refere o Cliente da compra com ID, nome, email, CPF, RG, senha, data de nascimento, status, nome social, telefone e endereço
-|Produto |object|sim| Objeto que se refere ao produto da compra com id, nome, descricao, estrelas, numerod e avaliacoes, preco, preço frete, categoria, empresa, transportadora e marca
+|      Km      |String|     Sim     | conta quilometros
+|     tempo    |String|     Sim     | Registro da hora da corrida
+
 ```js
 {
-    id:"1",
-    data: "PedroSag",
-    hora: "1234abc@"
-    Cliente:{
-        id:1
-        nome: "Pedro Henrique Sanagiotto",
-        data de nascimento: "20/09/2002",
-        RG: "33.123.987-8",
-        CPF: "111.222.444-10",
-        email: "pedro@gemail.com",
-        nome de usuario: "PedroSag"
-        senha: "12345@abc",
-        confirmacao de senha: "12345@abc"
-    }
-    produto:{
-        id:1,
-        nome:"computador",
-        descricao:"Computador high tech",
-        estrelas:5,
-        numeroAvaliacoes:2,
-        preco:1000.00,
-        precoFrete:9.99
-        categoria:{
-            id:1
-            nome: "Placa mãe",
-            descricao: "Componentes para hardware de computadores"
-        }
-        empresa:{
-            id:1,
-            nome:"computador Co",
-            razaoSocial:"Computadores Co",
-            numeroAvaliacao:5
-            enderecoEmpresa:{
-                id:1
-                cep:"00000-000"
-                logradouro:"Rua Lins de Vasconcelos"
-                bairro:"Aclimação"
-                pais:"brasil"
-                numero:1011
-                status:"A"
-                complemento:"ap 42A"
-            }
-            telefoneEmpresa:{
-                id:1
-                telefone:"99999-9999"
-                ddd:"011",
-                ddi:"+55"
-                status:"A"
-            }
-        }
-        transportadora:{
-            id:1,
-            nome:"Sedex",
-            descricao:"Entrega super rápida",
-            numeroNota:5
-        }
-        marca:{
-            id:1,
-            nome:"nieke",
-            descricao:"produto bom e barato",
-            nota:5,
-        }
-    }
+    "km": 10.0,
+    "tempo": 12.00
 }
 ```
 
@@ -684,63 +390,17 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 | `500` | Internal server error|
 ---
 
-## Empresa
-### Listar_Empresas
-`GET` /localhost/api/empresas/
+## Desafio
+
+### Listar_Desafio
+`GET` /localhost/api/desafios
 
 ```Js
 {
-    id:1,
-    nome:"computador Co",
-    nomeRazaoSocial:"Computadores Co",
-    descricao: "empresa de tech",
-    numeroVendas:125454,
-    numeroAvaliacao:5
-    enderecoEmpresa:{
-        id:1
-        cep:"00000-000"
-        logradouro:"Rua Lins dVasconcelos"
-        bairro:"Aclimação"
-        pais:"brasil"
-        numero:1011
-        status:"A"
-        complemento:"ap 42A"
-    }
-    telefoneEmpresa:{
-        id:1
-        telefone:"99999-9999"
-        ddd:"011",
-        ddi:"+55"
-        status:"A"
-    },
-    produtos:{
-        {
-            id:1,
-            nome:"computador",
-            descricao:"Computador high tech",
-            estrelas:5,
-            numeroAvaliacoes:2,
-            preco:1000.00,
-            precoFrete:9.99
-            categoria:{
-                id:1
-                nome: "Placa mãe",
-                descricao: "Componentes para hardware de computadores"
-            },
-            transportadora:{
-                id:1,
-                nome:"Sedex",
-                descricao:"Entrega super rápida",
-                numeroNota:5
-            }
-            marca:{
-                id:1,
-                nome:"nieke",
-                descricao:"produto bom e barato",
-                nota:5,
-            }
-        }
-    }
+    "nome": "Corrida de 6km",
+    "descricao": "Objetivo e realizar uma pedalada de 8km durante a semana",
+    "tempo": "10:00 minutos",
+    "recompensa": "Vupom da decathlon"
 }
 ```
 
@@ -755,39 +415,22 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 | `500` | Internal server error|
 ---
 
-### Cadastrar_Empresa
-`POST` /localhost/api/telefoneEmpresa
+### Cadastrar_Desafio
+`POST` /localhost/api/desafios
 |    Campo     | Tipo | Obrigatorio | Descrição
 |--------------|------|:-----------:|----------|
-|   Nome       |String|     Sim     |Necessario para cadastrar uma empresa
-| Razão Social |String|     Sim     |Necessario para cadastrar uma empresa
-|numeroAvaliação|Interger|     Sim     | Registra a avaliação da empresa, a nota pode ser de 0-5
-|   Endereço  |object|     Sim     | Este campo recebe um objeto referende ao endereço da empresa contendo: id, CEP, logradouro, bairro, pais, numero, status e complemento.
-| Telefone | object | sim | Este campo recebe um objeto referende ao telefone da empresa contendo: id, telefone, DDD , DDI e Status.
+|   Nome       |String|     Sim     |Necessario para cadastrar um desafio
+| descricao    |String|     Sim     |Necessario para cadastrar um desafio
+|   tempo      |String|     Sim     |Necessario para cadastrar um desafio
+| recompensa   |String|     Sim     |Necessario para cadastrar um desafio
+
 
 ```Js
 {
-    id:1,
-    nome:"computador Co",
-    razaoSocial:"Computadores Co",
-    numeroAvaliacao:5
-    enderecoEmpresa:{
-        id:1
-        cep:"00000-000"
-        logradouro:"Rua Lins dVasconcelos"
-        bairro:"Aclimação"
-        pais:"brasil"
-        numero:1011
-        status:"A"
-        complemento:"ap 42A"
-    }
-    telefoneEmpresa:{
-        id:1
-        telefone:"99999-9999"
-        ddd:"011",
-        ddi:"+55"
-        status:"A"
-    }
+    "nome": "Corrida de 6km",
+    "descricao": "Objetivo e realizar uma pedalada de 8km durante a semana",
+    "tempo": "10:00 minutos",
+    "recompensa": "Vupom da decathlon"
 }
 ```
 
@@ -802,32 +445,17 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 | `500` | Internal server error|
 ---
 
-### Pesquisar_Empresa
-`GET` /localhost/api/empresas/{id}
+### Pesquisar_Desafio
+`GET` /localhost/api/desafios/{id}
 ```Js
+
 {
-    id:1,
-    nome:"computador Co",
-    nomeRazaoSocial:"Computadores Co",
-    numeroAvaliacao:5
-    enderecoEmpresa:{
-        id:1
-        cep:"00000-000"
-        logradouro:"Rua Lins dVasconcelos"
-        bairro:"Aclimação"
-        pais:"brasil"
-        numero:1011
-        status:"A"
-        complemento:"ap 42A"
-    }
-    telefoneEmpresa:{
-        id:1
-        telefone:"99999-9999"
-        ddd:"011",
-        ddi:"+55"
-        status:"A"
-    }
+    "nome": "Corrida de 6km",
+    "descricao": "Objetivo e realizar uma pedalada de 8km durante a semana",
+    "tempo": "10:00 minutos",
+    "recompensa": "Vupom da decathlon"
 }
+
 ```
 
 ## Respostas que podem aparecer no GET :
@@ -841,39 +469,20 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 | `500` | Internal server error|
 ---
 
-### Atualizar_Empresa
-`PUT` /localhost/api/empresas/{id}
+### Atualizar_Desafio
+`PUT` /localhost/api/desafios/{id}
 |    Campo     | Tipo | Obrigatorio | Descrição
 |--------------|------|:-----------:|----------|
 |   Nome       |String|     Sim     |Necessario para cadastrar uma empresa
 | Razão Social |String|     Sim     |Necessario para cadastrar uma empresa
-|numeroAvaliação|Interger|     Sim     | Registra a avaliação da empresa, a nota pode ser de 0-5
-|   Endereço  |object|     Sim     | Este campo recebe um objeto referende ao endereço da empresa contendo: id, CEP, logradouro, bairro, pais, numero, status e complemento.
-| Telefone | object | sim | Este campo recebe um objeto referende ao telefone da empresa contendo: id, telefone, DDD , DDI e Status.
+
 
 ```Js
 {
-    id:1,
-    nome:"computador Co",
-    razaoSocial:"Computadores Co",
-    numeroAvaliacao:5
-    enderecoEmpresa:{
-        id:1
-        cep:"00000-000"
-        logradouro:"Rua Lins dVasconcelos"
-        bairro:"Aclimação"
-        pais:"brasil"
-        numero:1011
-        status:"A"
-        complemento:"ap 42A"
-    }
-    telefoneEmpresa:{
-        id:1
-        telefone:"99999-9999"
-        ddd:"011",
-        ddi:"+55"
-        status:"A"
-    }
+    "nome": "Corrida de 6km",
+    "descricao": "Objetivo e realizar uma pedalada de 8km durante a semana",
+    "tempo": "10:00 minutos",
+    "recompensa": "Vupom da decathlon"
 }
 ```
 
@@ -888,8 +497,8 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 | `500` | Internal server error|
 ---
 
-### Deletar_Empresa
-`DELETE` /localhost/api/categoria/{id}
+### Deletar_desafio
+`DELETE` /localhost/api/desafio/{id}
 
 ```js
     {
@@ -909,30 +518,29 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 ---
 ## Endereço
 
-### Cadastrar_Endereco_Cliente
-`POST` /localhost/api/enderecoCliente/{id}
+### Cadastrar_Endereco
+`POST` /localhost/api/enderecos/{id}
 
 |    Campo     | Tipo | Obrigatorio | Descrição
 |--------------|------|:-----------:|----------|
-|     ID       |Interger|     Sim     |Gerado automaticamente pela aplicação
 |   CEP   |String| sim | Código de endereço postal usado para localizar a residência
-| Logradouro |String|     Sim     |Necessario para cadastrar um endereço para um cliente
-| Bairro | String | sim | nescessário para cadastrar do endereço do cliente
-| Pais | String | sim | nescessário para cadastrar do endereço do cliente
-| Numero | Interger | sim | Se refere ao numero da residência
-| Status | Char | sim | Enum que indica se o endereço esta ativo ou inativo
+| Logradouro |String|     Sim     |Necessario para cadastrar um endereço para um usuario
+| Bairro | String | sim | nescessário para cadastrar do endereço do usuario
+| Cidade | String | sim | nescessário para cadastrar do endereço do usuario
+| Pais | String | sim | nescessário para cadastrar do endereço do usuario
+| Numero | int | sim | Se refere ao numero da residência
 | Complemento | String | sim | Aqui há uma pequena descrição para ajudar a localizar a residência 
 
 ```JS
 {
-    id:1
-    cep:"00000-000"
-    logradouro:"Rua Lins dVasconcelos"
-    bairro:"Aclimação"
-    pais:"brasil"
-    numero:1011
-    status:"A"
-    complemento:"ap 42A"
+    "id": 1
+    "logradouro": "Rua jose azevedo",
+    "numero": 1402,
+    "bairro": "Jardins",
+    "cidade": "São Paulo",
+    "pais": "Brasil",
+    "cep": "04555310",
+    "complemento": "N/A"
 }
 ```
 
@@ -949,17 +557,17 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 ---
 
 ### Mostra_Endereco
-`GET` /localhost/api/enderecoCliente/{id}
+`GET` /localhost/api/enderecos/{id}
 ```JS
 {
-    id:1
-    cep:"00000-000"
-    logradouro:"Rua Lins dVasconcelos"
-    bairro:"Aclimação"
-    pais:"brasil"
-    numero:1011
-    status:"A"
-    complemento:"ap 42A"
+    "id": 1
+    "logradouro": "Rua jose azevedo",
+    "numero": 1402,
+    "bairro": "Jardins",
+    "cidade": "São Paulo",
+    "pais": "Brasil",
+    "cep": "04555310",
+    "complemento": "N/A"
 }
 ```
 
@@ -976,29 +584,28 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 ---
 
 ### Atualiza_Endereco
-`PUT` /localhost/api/enderecoCliente/{id}
+`PUT` /localhost/api/enderecos/{id}
 
 |    Campo     | Tipo | Obrigatorio | Descrição
 |--------------|------|:-----------:|----------|
-|     ID       |Interger|     Sim     |Gerado automaticamente pela aplicação
 |   CEP   |String| sim | Código de endereço postal usado para localizar a residência
-| Logradouro |String|     Sim     |Necessario para cadastrar um endereço para um cliente
-| Bairro | String | sim | nescessário para cadastrar do endereço do cliente
-| Pais | String | sim | nescessário para cadastrar do endereço do cliente
-| Numero | Interger | sim | Se refere ao numero da residência
-| Status | Char | sim | Enum que indica se o endereço esta ativo ou inativo
+| Logradouro |String|     Sim     |Necessario para cadastrar um endereço para um usuario
+| Bairro | String | sim | nescessário para cadastrar do endereço do usuario
+| Cidade | String | sim | nescessário para cadastrar do endereço do usuario
+| Pais | String | sim | nescessário para cadastrar do endereço do usuario
+| Numero | int | sim | Se refere ao numero da residência
 | Complemento | String | sim | Aqui há uma pequena descrição para ajudar a localizar a residência 
 
 ```JS
 {
-    id:1
-    cep:"00000-000"
-    logradouro:"Rua Lins dVasconcelos"
-    bairro:"Aclimação"
-    pais:"brasil"
-    numero:1011
-    status:"A"
-    complemento:"ap 42A"
+    "id": 1
+    "logradouro": "Rua jose azevedo",
+    "numero": 1402,
+    "bairro": "Jardins",
+    "cidade": "São Paulo",
+    "pais": "Brasil",
+    "cep": "04555310",
+    "complemento": "N/A"
 }
 ```
 ## Respostas que podem aparecer no PUT :
@@ -1013,7 +620,7 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 | `500` | Internal server error|
 ---
 
-### Deleta_Endereco_Cliente
+### Deleta_Endereco
 `DELETE` /localhost/api/enderecoCliente/{id}
 ```js
     {
@@ -1033,32 +640,20 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 | `500` | Internal server error|
 
 ---
-## Endereço Empresa
-### Cadastrar_Endereco_Empresa
-`POST` /localhost/api/enderecoEmpresa/{id}
+## Registro
+### Cadastrar_registro
+`POST` /localhost/api/registro
 
 |    Campo     | Tipo | Obrigatorio | Descrição
 |--------------|------|:-----------:|----------|
-|     ID       |Interger|     Sim     |Gerado automaticamente pela aplicação
-|   CEP   |String| sim | Código de endereço postal usado para localizar a residência
-| Logradouro |String|     Sim     |Necessario para cadastrar um endereço para um Empresa
-| Bairro | String | sim | nescessário para cadastrar do endereço do Empresa
-| Pais | String | sim | nescessário para cadastrar do endereço do Empresa
-| Numero | Interger | sim | Se refere ao numero da residência
-| Status | Char | sim | Enum que indica se o endereço esta ativo ou inativo
-| Complemento | String | sim | Aqui há uma pequena descrição para ajudar a localizar a residência 
+| horaRegistro |String|     Sim     | Necessario para cadastrar registro da corrida feita pelo usuario
+
 
 ```JS
 {
-    id:1
-    cep:"00000-000"
-    logradouro:"Rua Lins dVasconcelos"
-    bairro:"Aclimação"
-    pais:"brasil"
-    numero:1011
-    status:"A"
-    complemento:"ap 42A"
+    "horaRegistro": "12:30"
 }
+
 ```
 ## Respostas que podem aparecer no POST :
 
@@ -1073,17 +668,11 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 ---
 
 ### Mostra_Endereco
-`GET` /localhost/api/enderecoEmpresa/{id}
+`GET` /localhost/api/registros/{id}
 ```JS
 {
     id:1
-    cep:"00000-000"
-    logradouro:"Rua Lins dVasconcelos"
-    bairro:"Aclimação"
-    pais:"brasil"
-    numero:1011
-    status:"A"
-    complemento:"ap 42A"
+    "horaRegistro": "12:30"
 }
 ```
 ## Respostas que podem aparecer no GET :
@@ -1098,29 +687,16 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 | `500` | Internal server error|
 ---
 ### Atualiza_Endereco_Empresa
-`PUT` /localhost/api/enderecoEmpresa/{id}
+`PUT` /localhost/api/registro/{id}
 
 |    Campo     | Tipo | Obrigatorio | Descrição
 |--------------|------|:-----------:|----------|
-|     ID       |Interger|     Sim     |Gerado automaticamente pela aplicação
-|   CEP   |String| sim | Código de endereço postal usado para localizar a residência
-| Logradouro |String|     Sim     |Necessario para cadastrar um endereço para um Empresa
-| Bairro | String | sim | nescessário para cadastrar do endereço do Empresa
-| Pais | String | sim | nescessário para cadastrar do endereço do Empresa
-| Numero | Interger | sim | Se refere ao numero da residência
-| Status | Char | sim | Enum que indica se o endereço esta ativo ou inativo
-| Complemento | String | sim | Aqui há uma pequena descrição para ajudar a localizar a residência 
+| horaRegistro |String|     Sim     | Necessario para cadastrar registro da corrida feita pelo usuario
 
 ```JS
 {
     id:1
-    cep:"00000-000"
-    logradouro:"Rua Lins dVasconcelos"
-    bairro:"Aclimação"
-    pais:"brasil"
-    numero:1011
-    status:"A"
-    complemento:"ap 42A"
+    "horaRegistro": "12:30"
 }
 ```
 ## Respostas que podem aparecer no PUT :
@@ -1134,8 +710,8 @@ API de gerenciamento e consulta de dados de um e-commerce de computadores e peri
 | `405` | Método não implementado.|
 | `500` | Internal server error|
 ---
-### Deleta_Endereco_Empresa
-`DELETE` /localhost/api/enderecoEmpresa/{id}
+### Deleta_registro
+`DELETE` /localhost/api/registros/{id}
 ```js
     {
         id: "1"
