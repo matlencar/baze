@@ -205,7 +205,7 @@
 | `404` | Registro pesquisado não encontrado (Not found).|
 | `500` | Internal server error|
 ---
-### Inserir_Categoria
+### Inserir_Bicicleta
 
 `POST` /localhost/api/bicicletas
 
