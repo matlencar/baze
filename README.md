@@ -7,32 +7,32 @@
 
 - Usuario
 
-    - [Efetuar login](#login)
-    - [Realizar Cadastro](#cadastrar)
-    - [Atualizar Cadastro](#atualizar)
-    - [Deletar Conta](#deletar)
+    - [Efetuar ](#login)
+    - [Realizar ](#cadastrar)
+    - [Atualizar ](#atualizar)
+    - [Deletar ](#deletar)
 
 - Bicicleta
 
-    - [Listar todas Categorias](#listar_bicicleta)
-    - [Inserir Categoria](#inserir_bicicleta)
-    - [Atualizar Categoria](#atualizar_bicicleta)
-    - [Deletar Categoria](#deletar_bicicleta)
+    - [Listar](#listar_bicicleta)
+    - [Inserir](#inserir_bicicleta)
+    - [Atualizar](#atualizar_bicicleta)
+    - [Deletar](#deletar_bicicleta)
 
 - Corrida
 
-    - [Listar todas Compras](#listar_corrida)
-    - [Listar todas Compras por Usuario](#listar_corrida)
-    - [Registrar Compra](#registrar_corrida)
-    - [Atualizar Compra](#atualizar_corrida)
+    - [Listar ](#listar_corrida)
+    - [Listar ](#listar_corrida)
+    - [Registrar ](#registrar_corrida)
+    - [Atualizar ](#atualizar_corrida)
 
 - Desafio
 
-    - [Listar todas Empresas](#listar_desafio)
-    - [Cadastra Empresa](#cadastrar_desafio)
-    - [pesquisa empresa](#pesquisar_desafio)
-    - [Atualizar dados da Empresa](#atualizar_desafio)
-    - [Deletar Empresa](#deletar_desafio)
+    - [Listar  ](#listar_desafio)
+    - [Cadastra ](#cadastrar_desafio)
+    - [pesquisa ](#pesquisar_desafio)
+    - [Atualizar ](#atualizar_desafio)
+    - [Deletar ](#deletar_desafio)
     
 - Endereço
 
@@ -43,17 +43,17 @@
 
 - Registro
 
-    - [Cadastra Endereço de uma empresa](#cadastrar_registro)
-    - [Mostra endereços de uma empresa](#mostra_registro)
-    - [Atualizar endereço da empresa](#atualiza_registro)
-    - [Deletar endereço da empresa](#deleta_registro)
+    - [Cadastra](#cadastrar_registro)
+    - [Mostra](#mostra_registro)
+    - [Atualizar](#atualiza_registro)
+    - [Deletar](#deleta_registro)
 
 - Telefone 
 
-    - [Cadastra telefone de usuario](#cadastrar_telefone)
-    - [Mostra telefone de um usuario](#mostrar_telefone)
-    - [Atualiza telefone de um usuario](#atualiza_telefone)
-    - [Deleta Telefone de um usuario](#deletar_telefone)
+    - [Cadastra telefone ](#cadastrar_telefone)
+    - [Mostra telefone ](#mostrar_telefone)
+    - [Atualiza telefone ](#atualiza_telefone)
+    - [Deleta Telefone ](#deletar_telefone)
 
 
 ---
@@ -319,7 +319,7 @@
 | `500` | Internal server error|
 
 ---
-### Listar_Compras_Usuario
+### Listar__Usuario
 `GET` /localhost/api/corridas/{id}
 ```js
    {
