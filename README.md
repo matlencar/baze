@@ -36,10 +36,10 @@
     
 - Endereço
 
-    - [Cadastra Endereço de um cliente](#cadastrar_endereco)
-    - [Mostra endereços de um cliente](#mostra_endereco)
-    - [Atualizar endereço de um cliente](#atualiza_endereco)
-    - [Deletar endereço de um cliente](#deleta_endereco)
+    - [Cadastra Endereço](#cadastrar_endereco)
+    - [Mostra endereços](#mostra_endereco)
+    - [Atualizar endereço](#atualiza_endereco)
+    - [Deletar endereço](#deleta_endereco)
 
 - Registro
 
