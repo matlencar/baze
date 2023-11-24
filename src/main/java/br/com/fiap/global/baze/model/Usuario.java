@@ -59,13 +59,13 @@ public class Usuario implements UserDetails {
     @Column(name = "nr_idade")
     private int idade;
 
-    @NotNull
-    @Column(name = "nr_peso")
-    private Double peso;
+    // @NotNull
+    // @Column(name = "nr_peso")
+    // private Double peso;
 
-    @NotNull
-    @Column(name = "nr_altura")
-    private Double altura;
+    // @NotNull
+    // @Column(name = "nr_altura")
+    // private Double altura;
 
     @NotBlank
     @Column(name = "nr_rg")

@@ -47,11 +47,11 @@ public class DatabaseSeeder implements CommandLineRunner {
 
         public void run(String... args) throws Exception {
 
-                Usuario usuario1 = new Usuario(1L, "matheus", "malencar292@gmail.com", "matlencar", "ola@", 29, 45.0, 1.75,
+                Usuario usuario1 = new Usuario(1L, "matheus", "malencar292@gmail.com", "matlencar", "ola@", 29,
                                 "01923466", "9900776655","Masculino");
-                Usuario usuario2 = new Usuario(2L, "caio", "caio192@gmail.com", "caiou", "ola@", 22, 45.0, 1.85,
+                Usuario usuario2 = new Usuario(2L, "caio", "caio192@gmail.com", "caiou", "ola@", 22,
                                 "01923466", "9900776655" ,"Masculino");
-                Usuario usuario3 = new Usuario(3L, "Karen", "karen292@gmail.com", "Karem","ola@", 18, 55.0, 1.65,
+                Usuario usuario3 = new Usuario(3L, "Karen", "karen292@gmail.com", "Karem","ola@", 18, 
                                 "01923466",
                                 "9900776655", "Feminino");
                 usuarioRepository.saveAll(List.of(usuario1, usuario2, usuario3));

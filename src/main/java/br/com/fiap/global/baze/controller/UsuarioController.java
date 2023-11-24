@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,6 +29,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/usuarios")
+@CrossOrigin(origins = "http://localhost:8080/", maxAge = 3600)
 public class UsuarioController {
     
     Logger log = LoggerFactory.getLogger(UsuarioController.class);
@@ -63,6 +65,7 @@ public class UsuarioController {
     @PostMapping
     public ResponseEntity<Usuario> create(@RequestBody @Valid Usuario usuario) {
         log.info("Cadastrando um usuario" + usuario);
+        usuario.setSenha(encoder.encode(usuario.getSenha()));
 
         repository.save(usuario);
 
